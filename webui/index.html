@@ -1499,6 +1499,16 @@
                                 </div>
                             </div>
 
+                            <!-- Drag and Drop Zone -->
+                            <div class="drag-drop-zone" 
+                                 @dragover.prevent="event.target.classList.add('drag-over')"
+                                 @dragleave.prevent="event.target.classList.remove('drag-over')"
+                                 @drop.prevent="handleFileDrop(event)">
+                                <div class="drag-icon">📁</div>
+                                <div class="drag-text">Drag and drop files here to upload</div>
+                                <div class="drag-text" style="font-size: 0.8rem; opacity: 0.7;">or use the upload button below</div>
+                            </div>
+
                             <div class="files-list">
                                 <!-- Header -->
                                 <div class="file-header">
@@ -1520,24 +1530,40 @@
                                             x-text="browser.sortDirection === 'asc' ? '↑' : '↓'">
                                         </span>
                                     </div>
+                                    <div class="file-cell-security" @click="toggleSort('security')">
+                                        Security
+                                        <span x-show="browser.sortBy === 'security'"
+                                            x-text="browser.sortDirection === 'asc' ? '↑' : '↓'">
+                                        </span>
+                                    </div>
                                 </div>
 
                                 <!-- File List -->
                                 <template x-if="browser.entries.length">
                                     <template x-for="file in sortFiles(browser.entries)" :key="file.path">
-                                        <div class="file-item" :data-is-dir="file.is_dir">
+                                        <div class="file-item" :data-is-dir="file.is_dir" :data-security="file.securityLevel">
                                             <div class="file-name"
                                                 @click="file.is_dir ? navigateToFolder(file.path) : downloadFile(file)">
-                                                <img :src="'/public/' + (file.type === 'unknown' ? 'file' : (isArchive(file.name) ? 'archive' : file.type)) + '.svg'"
+                                                <img :src="'/public/' + file.icon + '.svg'"
                                                     class="file-icon" :alt="file.type">
                                                 <span x-text="file.name"></span>
+                                                <span x-show="file.securityLevel !== 'unknown'" 
+                                                      :class="'security-badge ' + file.securityLevel" 
+                                                      x-text="file.securityLevel">
+                                                </span>
                                             </div>
                                             <div class="file-size" x-text="formatFileSize(file.size)"></div>
                                             <div class="file-date" x-text="formatDate(file.modified)"></div>
+                                            <div class="file-security" x-show="file.securityLevel !== 'unknown'">
+                                                <span :class="'security-badge ' + file.securityLevel" 
+                                                      x-text="file.securityLevel">
+                                                </span>
+                                            </div>
 
                                             <div class="file-actions">
                                                 <button class="action-button download-button"
-                                                    @click.stop="downloadFile(file)">
+                                                    @click.stop="downloadFile(file)" 
+                                                    title="Download file">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.5 19.5">
                                                         <path
                                                             d="m.75,14.25v2.25c0,1.24,1.01,2.25,2.25,2.25h13.5c1.24,0,2.25-1.01,2.25-2.25v-2.25m-4.5-4.5l-4.5,4.5m0,0l-4.5-4.5m4.5,4.5V.75"
@@ -1545,7 +1571,8 @@
                                                             stroke-linejoin="round" stroke-width="1.5"></path>
                                                     </svg>
                                                 </button>
-                                                <button class="delete-button" @click.stop="deleteFile(file)">
+                                                <button class="delete-button" @click.stop="deleteFile(file)"
+                                                       title="Delete file">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.03 22.53"
                                                         fill="currentColor">
                                                         <path
