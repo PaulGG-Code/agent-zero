@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <linearGradient id="agentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff41;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#008000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main agent circle -->
+  <circle cx="12" cy="12" r="8" fill="none" stroke="url(#agentGradient)" stroke-width="2"/>
+  
+  <!-- Central core -->
+  <circle cx="12" cy="12" r="3" fill="url(#agentGradient)" opacity="0.8"/>
+  
+  <!-- Configuration dots -->
+  <circle cx="12" cy="4" r="1.5" fill="#00ff41"/>
+  <circle cx="20" cy="12" r="1.5" fill="#00ff41"/>
+  <circle cx="12" cy="20" r="1.5" fill="#00ff41"/>
+  <circle cx="4" cy="12" r="1.5" fill="#00ff41"/>
+  
+  <!-- Connection lines -->
+  <line x1="12" y1="5.5" x2="12" y2="9" stroke="#00ff41" stroke-width="1.5"/>
+  <line x1="18.5" y1="12" x2="15" y2="12" stroke="#00ff41" stroke-width="1.5"/>
+  <line x1="12" y1="18.5" x2="12" y2="15" stroke="#00ff41" stroke-width="1.5"/>
+  <line x1="5.5" y1="12" x2="9" y2="12" stroke="#00ff41" stroke-width="1.5"/>
+  
+  <!-- Settings gear -->
+  <path d="M12 2 L12 0 M12 24 L12 22 M22 12 L24 12 M0 12 L2 12" 
+        stroke="#00ff41" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- Binary code elements -->
+  <text x="6" y="6" font-family="monospace" font-size="6" fill="#00ff41">01</text>
+  <text x="18" y="6" font-family="monospace" font-size="6" fill="#00ff41">10</text>
+  <text x="6" y="18" font-family="monospace" font-size="6" fill="#00ff41">11</text>
+  <text x="18" y="18" font-family="monospace" font-size="6" fill="#00ff41">00</text>
+</svg> 
