@@ -6,31 +6,39 @@
 }
 
 :root {
-  /* Dark mode */
-  --color-background-dark: #131313;
-  --color-text-dark: #d4d4d4;
-  --color-primary-dark: #737a81;
-  --color-secondary-dark: #656565;
-  --color-accent-dark: #cf6679;
-  --color-message-bg-dark: #2d2d2d;
+  /* Cybersecurity Dark Theme */
+  --color-background-dark: #0a0a0a;
+  --color-text-dark: #e0e0e0;
+  --color-primary-dark: #00ff41;
+  --color-secondary-dark: #1a1a1a;
+  --color-accent-dark: #ff0040;
+  --color-message-bg-dark: #1a1a1a;
   --color-message-text-dark: #e0e0e0;
-  --color-panel-dark: #171717;
-  --color-border-dark: #7e0000a8;
-  --color-input-dark: #131313;
-  --color-input-focus-dark: #101010;
+  --color-panel-dark: #0f0f0f;
+  --color-border-dark: #333333;
+  --color-input-dark: #1a1a1a;
+  --color-input-focus-dark: #2a2a2a;
+  --color-success-dark: #00ff41;
+  --color-warning-dark: #ffaa00;
+  --color-error-dark: #ff0040;
+  --color-info-dark: #0080ff;
 
-  /* Light mode */
-  --color-background-light: #dbdbdb;
-  --color-text-light: #333333;
-  --color-primary-light: #384653;
-  --color-secondary-light: #e8eaf6;
-  --color-accent-light: #b00020;
+  /* Cybersecurity Light Theme */
+  --color-background-light: #f5f5f5;
+  --color-text-light: #1a1a1a;
+  --color-primary-light: #006400;
+  --color-secondary-light: #e8e8e8;
+  --color-accent-light: #cc0000;
   --color-message-bg-light: #ffffff;
-  --color-message-text-light: #333333;
+  --color-message-text-light: #1a1a1a;
   --color-panel-light: #f0f0f0;
-  --color-border-light: #d82a2ac7;
-  --color-input-light: #e4e4e4;
-  --color-input-focus-light: #dadada;
+  --color-border-light: #cccccc;
+  --color-input-light: #ffffff;
+  --color-input-focus-light: #e8f4fd;
+  --color-success-light: #006400;
+  --color-warning-light: #cc6600;
+  --color-error-light: #cc0000;
+  --color-info-light: #0066cc;
 
   /* Default to dark mode */
   --color-background: var(--color-background-dark);
@@ -44,6 +52,10 @@
   --color-border: var(--color-border-dark);
   --color-input: var(--color-input-dark);
   --color-input-focus: var(--color-input-focus-dark);
+  --color-success: var(--color-success-dark);
+  --color-warning: var(--color-warning-dark);
+  --color-error: var(--color-error-dark);
+  --color-info: var(--color-info-dark);
 
   /* Spacing variables */
   --spacing-xs: 0.3125rem;
@@ -57,7 +69,7 @@
   --font-size-large: 1.2rem;
 
   /* Other variables */
-  --border-radius: 1.125rem;
+  --border-radius: 0.5rem;
   --transition-speed: 0.3s;
   --svg-filter: brightness(0) saturate(100%) var(--color-primary-filter);
   --color-primary-filter: invert(73%) sepia(17%) saturate(360%) hue-rotate(177deg) brightness(87%) contrast(85%);
@@ -68,7 +80,7 @@ body,
 html {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: "Rubik", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Mono", "Rubik", Arial, Helvetica, sans-serif;
   width: 100%;
   height: 100%;
   min-width: 320px !important;
@@ -79,6 +91,7 @@ html {
   position: fixed;
   -webkit-font-smoothing: antialiased; /* Improve font rendering */
   -moz-osx-font-smoothing: grayscale;    /* Improve font rendering */
+  letter-spacing: 0.3px;
 }
 
 body {
@@ -238,6 +251,9 @@ body,
 /* Subtle background on hover for the entire row */
 .chat-list-button:hover {
     background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+    transform: translateX(2px);
+    transition: all 0.2s ease;
 }
 
 .light-mode .chat-list-button:hover {
@@ -534,7 +550,9 @@ pre {
 #progress-bar-i {
   font-weight: bold;
   padding-right: 0.5em;
-  color: var(--color-secondary);
+  color: var(--color-primary);
+  text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+  animation: heartbeat 2s infinite;
 }
 
 .progress-bar h4 {
@@ -631,7 +649,7 @@ pre {
   margin-bottom: 0;
 }
 
-/* Update message types for dark mode */
+/* Update message types for cybersecurity theme */
 .message-default,
 .message-agent,
 .message-agent-response,
@@ -643,53 +661,75 @@ pre {
 .message-util,
 .message-warning,
 .message-error {
-  color: #e0e0e0;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  margin: var(--spacing-sm) 0;
+  padding: var(--spacing-md);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
 .message-default {
-  background-color: #1a242f;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-primary);
 }
 
 .message-agent {
-  background-color: #34506b;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-info);
 }
 
 .message-agent-response {
   min-width: 255px;
-  background-color: #1f3c1e;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-success);
 }
 
 .message-agent-delegation {
-  background-color: #12685e;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-warning);
 }
 
 .message-tool {
-  background-color: #2a4170;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-primary);
 }
 
 .message-code-exe {
-  background-color: #4b3a69;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-accent);
 }
 
 .message-browser {
-  background-color: #4b3a69;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-accent);
 }
 
 .message-info {
-  background-color: var(--color-panel);
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-info);
 }
 
 .message-util {
-  background-color: #23211a;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-secondary);
   display: none;
 }
 
 .message-warning {
-  background-color: #bc8036;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-warning);
 }
 
 .message-error {
-  background-color: #af2222;
+  background-color: var(--color-message-bg);
+  border-left: 4px solid var(--color-error);
 }
 
 /* Agent and AI Info */
@@ -910,10 +950,12 @@ pre {
 }
 
 #chat-input:focus {
-  outline: 0.05rem solid rgba(155, 155, 155, 0.5);
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.1);
+  background-color: var(--color-input-focus);
   font-size: 0.955rem;
   padding-top: 0.45rem;
-  background-color: var(--color-input-focus);
 }
 
 #chat-input::placeholder {
@@ -951,21 +993,40 @@ pre {
 
 .config-button {
   background-color: var(--color-background);
-  border: 0.1rem solid var(--color-border);
-  border-radius: var(--spacing-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
   cursor: pointer;
   display: inline;
-  font-family: "Rubik", Arial, Helvetica, sans-serif;
+  font-family: "Roboto Mono", monospace;
   font-size: var(--font-size-small);
-  opacity: 0.8;
+  font-weight: 500;
+  opacity: 0.9;
   text-wrap: nowrap;
   width: calc(50% - var(--spacing-xs));
-  float:left;
+  float: left;
   margin: 0 var(--spacing-xs) var(--spacing-xs) 0;
   padding: var(--spacing-sm) 0.75rem;
   max-height: 2.3rem;
   -webkit-transition: all var(--transition-speed), transform 0.1s ease-in-out;
   transition: all var(--transition-speed), transform 0.1s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.config-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.config-button:hover::before {
+  left: 100%;
 }
 
 .config-button:hover {
@@ -1298,7 +1359,8 @@ pre {
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
   transform-origin: center;
-  background-color: #353bc5;
+  background-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
 }
 
 #send-button:active {
@@ -1585,11 +1647,24 @@ input:checked + .slider:before {
 }
 
 .connected {
-  color: #00c340;
+  color: var(--color-success);
+  animation: pulse 2s infinite;
 }
 
 .disconnected {
-  color: #e40138;
+  color: var(--color-error);
+  animation: blink 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
 }
 
 .font-bold {
@@ -1909,6 +1984,10 @@ a:active {
   --color-border: var(--color-border-light);
   --color-input: var(--color-input-light);
   --color-input-focus: var(--color-input-focus-light);
+  --color-success: var(--color-success-light);
+  --color-warning: var(--color-warning-light);
+  --color-error: var(--color-error-light);
+  --color-info: var(--color-info-light);
 }
 
 .light-mode .msg-kvps tr {
@@ -1916,58 +1995,69 @@ a:active {
 }
 
 .light-mode .message-default {
-  background-color: #f3f3f3;
-  color: #1a242f;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-primary);
 }
 
 .light-mode .message-agent {
-  background-color: #f3f3f3;
-  color: #356ca3;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-info);
 }
 
 .light-mode .message-agent-response {
-  background-color: #f3f3f3;
-  color: #188216;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-success);
 }
 
 .light-mode .message-agent-delegation {
-  background-color: #f3f3f3;
-  color: #12685e;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-warning);
 }
 
 .light-mode .message-tool {
-  background-color: #f3f3f3;
-  color: #1c3c88;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-primary);
 }
 
 .light-mode .message-code-exe {
-  background-color: #f3f3f3;
-  color: #6c43b0;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-accent);
 }
 
 .light-mode .message-browser {
-  background-color: #ffffff;
-  color: #6c43b0;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-accent);
 }
 
 .light-mode .message-info {
-  background-color: #f3f3f3;
-  color: #3f3f3f;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-info);
 }
 
 .light-mode .message-util {
-  background-color: #f3f3f3;
-  color: #5b5540;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-secondary);
 }
 
 .light-mode .message-warning {
-  background-color: #f3f3f3;
-  color: #8f4800;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-warning);
 }
 
 .light-mode .message-error {
-  background-color: #f3f3f3;
-  color: #8f1010;
+  background-color: var(--color-message-bg);
+  color: var(--color-message-text);
+  border-left: 4px solid var(--color-error);
 }
 
 .light-mode .message-user {
@@ -2301,13 +2391,11 @@ a:active {
 }
 
 .tab.active {
-  border-color: var(--color-border);
-  /* box-shadow:
-    0 -4px 8px -2px var(--color-border),
-    4px 0 8px -2px var(--color-border),
-    -4px 0 8px -2px var(--color-border); */
+  border-color: var(--color-primary);
   font-weight: bold;
-  background-color: var(--color-panel);
+  background-color: var(--color-primary);
+  color: var(--color-background);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
 }
 
 .light-mode .tab.active {
@@ -2967,4 +3055,43 @@ nav ul li a img {
     margin-right: 5px;
     min-width: 40px;
     text-align: center;
+}
+
+/* Cybersecurity Matrix Rain Effect */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.matrix-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.matrix-rain::before {
+  content: '01';
+  position: absolute;
+  color: var(--color-primary);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  animation: matrix-rain 3s linear infinite;
+  text-shadow: 0 0 5px var(--color-primary);
 }
