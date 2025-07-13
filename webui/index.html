@@ -150,6 +150,16 @@
             <!--Sidebar upper elements-->
             <div class="left-panel-top">
                 <div class="config-section" x-data="{ showQuickActions: true }">
+                    <!-- Cybersecurity Tool Icons -->
+                    <div class="cyber-tools-header">
+                        <span class="cyber-badge secure">SECURE</span>
+                        <div class="tool-icons">
+                            <img src="./public/web-hacking.svg" alt="Web Hacking" class="tool-icon web" title="Web Hacking">
+                            <img src="./public/iot-hacking.svg" alt="IoT Hacking" class="tool-icon iot" title="IoT Hacking">
+                            <img src="./public/smart-contract.svg" alt="Smart Contract Hacking" class="tool-icon smart-contract" title="Smart Contract Hacking">
+                        </div>
+                    </div>
+                    
                     <button class="config-button" id="resetChat" @click="resetChat()">Reset Chat</button>
                     <button class="config-button" id="newChat" @click="newChat()">New Chat</button>
                     <button class="config-button" id="loadChats" @click="loadChats()">Load Chat</button>

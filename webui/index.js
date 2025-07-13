@@ -515,12 +515,20 @@ function updateProgress(progress, active) {
 
     if (!active) {
         removeClassFromElement(progressBar, "shiny-text")
+        removeClassFromElement(progressBar, "cyber-active")
     } else {
         addClassToElement(progressBar, "shiny-text")
+        addClassToElement(progressBar, "cyber-active")
     }
 
     if (progressBar.innerHTML != progress) {
-        progressBar.innerHTML = progress
+        // Add cybersecurity-themed loading indicator
+        if (active) {
+            const cyberProgress = `<span class="cyber-loading"></span> ${progress}`;
+            progressBar.innerHTML = cyberProgress;
+        } else {
+            progressBar.innerHTML = progress;
+        }
     }
 }
 

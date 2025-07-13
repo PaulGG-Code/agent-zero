@@ -88,6 +88,21 @@ export function _drawMessage(
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message", ...messageClasses);
 
+  // Add cybersecurity status indicator
+  const statusIndicator = document.createElement("span");
+  statusIndicator.className = "status-indicator";
+  
+  // Determine status based on message classes
+  if (messageClasses.includes("message-error") || messageClasses.includes("message-warning")) {
+    statusIndicator.classList.add("critical");
+  } else if (messageClasses.includes("message-agent") || messageClasses.includes("message-tool")) {
+    statusIndicator.classList.add("secure");
+  } else {
+    statusIndicator.classList.add("vulnerable");
+  }
+  
+  messageDiv.appendChild(statusIndicator);
+
   if (heading) {
     const headingElement = document.createElement("h4");
     headingElement.textContent = heading;
