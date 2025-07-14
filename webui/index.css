@@ -540,11 +540,13 @@ pre {
   display: flex;
   align-items: left;
   justify-content: flex-start;
-  height: 1.2em;
+  height: 1.7em;
+  font-size: 1.05em;
   text-overflow: ellipsis;
-  white-space: nowrap;       /* Added for text overflow */
+  white-space: nowrap;
   overflow: hidden;
   font-weight: normal;
+  margin: 0;
 }
 
 #progress-bar-i {
