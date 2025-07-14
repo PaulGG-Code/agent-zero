@@ -19,3 +19,11 @@
 {{ include './agent.system.tool.browser.md' }}
 
 {{ include './agent.system.tool.scheduler.md' }}
+
+{{ include './agent.system.tool.security_discovery.md' }}
+
+{{ include './agent.system.tool.security_workflow.md' }}
+
+{{ include './agent.system.tool.vulnerability_research.md' }}
+
+{{ include './agent.system.tool.advanced_exploitation.md' }}

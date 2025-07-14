@@ -9,3 +9,7 @@
 {{ include "./agent.system.main.solving.md" }}
 
 {{ include "./agent.system.main.tips.md" }}
+
+{{ include "./agent.system.security.md" }}
+
+{{ include "./agent.system.offensive_security.md" }}
