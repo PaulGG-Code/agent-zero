@@ -575,3 +575,7 @@
     height: 28px;
   }
 }
+
+.btn-upload, .nav-button, .action-button {
+  border-radius: 24px !important;
+}

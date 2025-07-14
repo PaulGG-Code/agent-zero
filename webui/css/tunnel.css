@@ -176,3 +176,7 @@
 .stopping {
     background-color: rgba(220, 53, 69, 0.7) !important;
 }
+
+.btn, .btn-danger, .copy-link-button, .refresh-link-button {
+  border-radius: 24px !important;
+}
